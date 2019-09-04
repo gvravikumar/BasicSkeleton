@@ -33,8 +33,6 @@ public class MapsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         AndroidSupportInjection.inject(this);
-        Log.v("Dagger Setup", "in fragment is " + (sampleResponse != null));
-        Log.v("Dagger Setup", sampleResponse.getName());
         return inflater.inflate(R.layout.fragment_maps, container, false);
     }
 

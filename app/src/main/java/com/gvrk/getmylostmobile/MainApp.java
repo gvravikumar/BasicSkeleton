@@ -6,6 +6,8 @@ import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.ContentProvider;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.FirebaseDatabase;
 import com.gvrk.getmylostmobile.Dagger.component.DaggerAppComponent;
 
 import javax.inject.Inject;
@@ -36,6 +38,8 @@ public class MainApp extends Application implements HasActivityInjector,
     @Override
     public void onCreate() {
         super.onCreate();
+        FirebaseApp.initializeApp(this);
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         DaggerAppComponent.builder().build().inject(this);
     }
 

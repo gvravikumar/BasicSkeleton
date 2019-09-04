@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">GetMyLocation</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lost_your_mobile">Lost Your Mobile!</string>
+    <string name="register_mobile">Register your number with your relatives, neighbours…</string>
+    <string name="self_mobile">Your Mobile Number</string>
+    <string name="other_mobile">Your  friend\'s mobile number</string>
+    <string name="self_email">Your E-Mail</string>
+    <string name="self_name">Your Name</string>
+    <string name="register">Register</string>
+    <string name="self_error">Mobile Number is required</string>
+    <string name="other_error">Other Mobile Number is required</string>
+    <string name="mail_error">valid E-mail is required</string>
+    <string name="name_error">Please enter valid name</string>
 </resources>

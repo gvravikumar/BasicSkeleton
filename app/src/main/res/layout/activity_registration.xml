@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.Activities.RegistrationActivity"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/et_self"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/self_mobile"
+        android:inputType="phone"
+        android:imeOptions="actionNext"
+        android:maxLength="10"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_other"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/other_mobile"
+        android:inputType="phone"
+        android:imeOptions="actionNext"
+        android:maxLength="10"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_self"
+        app:layout_constraintBottom_toTopOf="@id/et_mail"/>
+
+    <EditText
+        android:id="@+id/et_mail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/self_email"
+        android:inputType="textEmailAddress"
+        android:imeOptions="actionNext"
+        android:maxLength="25"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_other"
+        app:layout_constraintBottom_toTopOf="@id/et_name"/>
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/self_name"
+        android:inputType="textPersonName"
+        android:imeOptions="actionDone"
+        android:maxLength="20"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_mail"
+        app:layout_constraintBottom_toTopOf="@id/tv_register"/>
+
+    <TextView
+        android:id="@+id/tv_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="@string/register"
+        app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
