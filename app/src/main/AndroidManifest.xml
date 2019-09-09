@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.gvrk.getmylostmobile">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:name=".MainApp"
         android:allowBackup="true"
@@ -12,7 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".View.Activities.TrackLostMobileActivity"></activity>
+        <service
+            android:name=".Services.MyFirebaseMessagingService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".View.Activities.TrackLostMobileActivity" />
         <activity android:name=".View.Activities.RegistrationActivity" />
         <activity android:name=".View.Activities.MainActivity">
             <intent-filter>
