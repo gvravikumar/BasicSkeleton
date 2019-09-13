@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -41,20 +42,21 @@ public class RegistrationActivity extends BasicActivity {
     EditText et_name;
     @BindView(R.id.tv_register)
     TextView tv_register;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         ButterKnife.bind(this);
-        AndroidInjection.inject(this);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         tv_register.setOnClickListener(register);
     }
 
     @SuppressLint("HardwareIds")
     View.OnClickListener register = v -> {
         if (isValid()) {
-            registeredUsersDatabase = firebaseDatabase.getReference("registeredUsers");
+            registeredUsersDatabase = firebaseDatabase.getReference("signUpDatabase");
             UserRegistration userRegistration = new UserRegistration();
             userRegistration.setSelf(et_self.getText().toString());
             userRegistration.setOther(et_other.getText().toString());
@@ -62,6 +64,7 @@ public class RegistrationActivity extends BasicActivity {
             userRegistration.setName(et_name.getText().toString());
             registeredUsersDatabase.child(Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID))
                     .setValue(userRegistration, (databaseError, databaseReference) -> finish());
+            mFirebaseAnalytics.logEvent("registrationSuccess", new Bundle());
             finish();
         }
     };

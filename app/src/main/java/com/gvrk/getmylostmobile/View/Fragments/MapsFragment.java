@@ -15,11 +15,12 @@ import com.gvrk.getmylostmobile.R;
 import javax.inject.Inject;
 
 import dagger.android.support.AndroidSupportInjection;
+import dagger.android.support.DaggerFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MapsFragment extends Fragment {
+public class MapsFragment extends DaggerFragment {
 
     @Inject
     SampleResponse sampleResponse;

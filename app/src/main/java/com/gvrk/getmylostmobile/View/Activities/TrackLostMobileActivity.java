@@ -32,7 +32,6 @@ public class TrackLostMobileActivity extends BasicActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_track_lost_mobile);
-        AndroidInjection.inject(this);
         registeredUsersDatabase = firebaseDatabase.getReference("registeredUsers");
         registeredUsersDatabase.child(Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID))
                 .addListenerForSingleValueEvent(new ValueEventListener() {

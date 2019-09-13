@@ -25,6 +25,10 @@ public class MainApp extends Application implements HasActivityInjector,
         HasContentProviderInjector {
 
     @Inject
+    public MainApp() {
+    }
+
+    @Inject
     DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
     @Inject
     DispatchingAndroidInjector<androidx.fragment.app.Fragment> dispatchingAndroidFragmentInjector;
