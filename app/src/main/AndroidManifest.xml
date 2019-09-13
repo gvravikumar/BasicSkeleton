@@ -4,6 +4,10 @@
     package="com.gvrk.getmylostmobile">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
     <application
         android:name=".MainApp"
         android:allowBackup="true"
@@ -21,6 +25,7 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+        <service android:name=".Services.SmsService" />
 
         <activity android:name=".View.Activities.TrackLostMobileActivity" />
         <activity android:name=".View.Activities.RegistrationActivity" />
@@ -31,6 +36,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".Receivers.SmsReceiver"
+            android:enabled="true"
+            android:priority="999">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

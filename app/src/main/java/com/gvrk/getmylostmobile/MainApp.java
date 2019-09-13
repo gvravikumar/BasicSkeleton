@@ -9,6 +9,7 @@ import android.content.ContentProvider;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.FirebaseDatabase;
 import com.gvrk.getmylostmobile.Dagger.component.DaggerAppComponent;
+import com.gvrk.getmylostmobile.Receivers.SmsReceiver;
 
 import javax.inject.Inject;
 

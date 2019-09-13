@@ -13,22 +13,22 @@ import dagger.Provides;
 public class FirebaseModule {
 
     @Provides
-    FirebaseDatabase getFirebaseDatabaseInstance() {
+    static FirebaseDatabase getFirebaseDatabaseInstance() {
         return FirebaseDatabase.getInstance();
     }
 
     @Provides
-    FirebaseRemoteConfig getFirebaseRemoteConfig() {
+    static FirebaseRemoteConfig getFirebaseRemoteConfig() {
         return FirebaseRemoteConfig.getInstance();
     }
 
     @Provides
-    Crashlytics getCrashlytics() {
+    static Crashlytics getCrashlytics() {
         return Crashlytics.getInstance();
     }
 
     @Provides
-    FirebaseAnalytics getFirebaseAnalytics(MainApp app) {
+    static FirebaseAnalytics getFirebaseAnalytics(MainApp app) {
         return FirebaseAnalytics.getInstance(app);
     }
 }

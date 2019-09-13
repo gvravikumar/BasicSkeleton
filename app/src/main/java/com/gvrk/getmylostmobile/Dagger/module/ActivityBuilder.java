@@ -12,18 +12,19 @@ import dagger.android.ContributesAndroidInjector;
 @Module
 public abstract class ActivityBuilder {
     //modules scope to respective Views
-    @ContributesAndroidInjector(modules = {})
+    //every fragment, activity must be registered here.
+    @ContributesAndroidInjector()
     abstract MainActivity mainActivity();
 
-    @ContributesAndroidInjector(modules = {})
+    @ContributesAndroidInjector()
     abstract RegistrationActivity registrationActivity();
 
-    @ContributesAndroidInjector(modules = {})
+    @ContributesAndroidInjector()
     abstract TrackLostMobileActivity trackLostMobileActivity();
 
-    @ContributesAndroidInjector(modules = {})
+    @ContributesAndroidInjector()
     abstract BasicActivity basicActivity();
 
-    @ContributesAndroidInjector(modules = {})
+    @ContributesAndroidInjector()
     abstract MapsFragment mapsFragment();
 }
