@@ -2,14 +2,14 @@ package com.gvrk.getmylostmobile.View.Activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.provider.Telephony;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DatabaseReference;
@@ -17,8 +17,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.gvrk.getmylostmobile.BasicActivity;
 import com.gvrk.getmylostmobile.Model.UserRegistration;
 import com.gvrk.getmylostmobile.R;
-import com.gvrk.getmylostmobile.Receivers.SmsReceiver;
 import com.gvrk.getmylostmobile.Services.SmsService;
+import com.gvrk.getmylostmobile.Utils.PreferenceManager;
 
 import javax.inject.Inject;
 
@@ -42,6 +42,8 @@ public class RegistrationActivity extends BasicActivity {
     @BindView(R.id.tv_register)
     TextView tv_register;
     private FirebaseAnalytics mFirebaseAnalytics;
+    @Inject
+    PreferenceManager sharedPrefsHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +64,12 @@ public class RegistrationActivity extends BasicActivity {
             userRegistration.setEmail(et_mail.getText().toString());
             userRegistration.setName(et_name.getText().toString());
             registeredUsersDatabase.child(Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID))
-                    .setValue(userRegistration, (databaseError, databaseReference) -> finish());
+                    .setValue(userRegistration, (databaseError, databaseReference) -> {
+                        sharedPrefsHelper.put(getString(R.string.USER_NAME), userRegistration.getName());
+                        sharedPrefsHelper.put(getString(R.string.SELF_MOB), userRegistration.getSelf());
+                        sharedPrefsHelper.put(getString(R.string.OTHER_MOB), userRegistration.getOther());
+                        startActivity(new Intent(RegistrationActivity.this, MainActivity.class));
+                    });
             mFirebaseAnalytics.logEvent("registrationSuccess", new Bundle());
             startService(new Intent(this, SmsService.class));
             finish();

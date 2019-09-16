@@ -6,6 +6,7 @@ import android.app.AppOpsManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -45,8 +46,8 @@ public class MainActivity extends BasicActivity {
     private static final int SMS_PERMISSION_CODE = 1212;
     @BindView(R.id.tv_lost_mobile)
     TextView tv_lost_mobile;
-    @BindView(R.id.tv_register)
-    TextView tv_register;
+    @BindView(R.id.tv_add_other_user)
+    TextView tv_add_other_user;
     @Inject
     FirebaseRemoteConfig mFirebaseRemoteConfig;
     @Inject
@@ -65,8 +66,8 @@ public class MainActivity extends BasicActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         mFirebaseAnalytics.logEvent("app_started", new Bundle());
-        tv_lost_mobile.setOnClickListener(lostMobile -> startActivity(new Intent(this, TrackLostMobileActivity.class)));
-        tv_register.setOnClickListener(register -> {
+        tv_lost_mobile.setOnClickListener(lostMobile -> startActivity(new Intent(this, UsersListActivity.class)));
+        tv_add_other_user.setOnClickListener(register -> {
             mFirebaseAnalytics.logEvent("registration", params);
             startActivity(new Intent(this, RegistrationActivity.class));
         });
@@ -77,7 +78,6 @@ public class MainActivity extends BasicActivity {
         fetchData();
         if (!isSmsPermissionGranted())
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_SMS}, SMS_PERMISSION_CODE);
-
     }
 
     private void fetchData() {

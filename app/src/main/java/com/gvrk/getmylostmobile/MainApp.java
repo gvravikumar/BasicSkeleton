@@ -5,10 +5,12 @@ import android.app.Application;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.ContentProvider;
+import android.content.Context;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.FirebaseDatabase;
 import com.gvrk.getmylostmobile.Dagger.component.DaggerAppComponent;
+import com.gvrk.getmylostmobile.Dagger.module.ContextModule;
 import com.gvrk.getmylostmobile.Receivers.SmsReceiver;
 
 import javax.inject.Inject;
@@ -26,10 +28,6 @@ public class MainApp extends Application implements HasActivityInjector,
         HasContentProviderInjector {
 
     @Inject
-    public MainApp() {
-    }
-
-    @Inject
     DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
     @Inject
     DispatchingAndroidInjector<androidx.fragment.app.Fragment> dispatchingAndroidFragmentInjector;
@@ -45,7 +43,11 @@ public class MainApp extends Application implements HasActivityInjector,
         super.onCreate();
         FirebaseApp.initializeApp(this);
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        DaggerAppComponent.builder().build().inject(this);
+        DaggerAppComponent
+                .builder()
+                .contextModule(new ContextModule(this))
+                .build()
+                .inject(this);
     }
 
     @Override

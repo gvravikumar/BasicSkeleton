@@ -1,5 +1,8 @@
 package com.gvrk.getmylostmobile.Dagger.module;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import com.crashlytics.android.Crashlytics;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,7 +31,7 @@ public class FirebaseModule {
     }
 
     @Provides
-    static FirebaseAnalytics getFirebaseAnalytics(MainApp app) {
+    static FirebaseAnalytics getFirebaseAnalytics(Context app) {
         return FirebaseAnalytics.getInstance(app);
     }
 }

@@ -2,7 +2,7 @@
     <string name="app_name">GetMyLocation</string>
 
     <string name="lost_your_mobile">Lost Your Mobile!</string>
-    <string name="register_mobile">Register your number with your relatives, neighbours…</string>
+    <string name="register_mobile">Add relatives, neighbours number</string>
     <string name="self_mobile">Your Mobile Number</string>
     <string name="other_mobile">Your  friend\'s mobile number</string>
     <string name="self_email">Your E-Mail</string>
@@ -13,4 +13,8 @@
     <string name="mail_error">valid E-mail is required</string>
     <string name="name_error">Please enter valid name</string>
     <string name="show_auto_start_screen">Auto Start</string>
+    <string name="OTHER_MOB">other mobile number</string>
+    <string name="USER_NAME">user name</string>
+    <string name="SELF_MOB">self mobile number</string>
+    <string name="submit">+</string>
 </resources>

@@ -16,11 +16,11 @@
         android:text="@string/lost_your_mobile"
         android:textAlignment="center"
         android:textColor="#FFF"
-        app:layout_constraintEnd_toStartOf="@+id/tv_register"
+        app:layout_constraintEnd_toStartOf="@+id/tv_add_other_user"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/tv_register"
+        android:id="@+id/tv_add_other_user"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary"
